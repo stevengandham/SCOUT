@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 WallDistanceLimit = 1000    # 1000mm = 1m distance drone would like to keep away from walls
 
 def main():
-    # read data from Collected Data
+    # read data from Collected Data as .txt file
     lidar_file = input("Enter Lidar Data File Name: ")
     with open(lidar_file, "r") as filename:
         allLines = filename.readlines();
@@ -76,7 +76,15 @@ def strafeLeft(points):
 # Experimental Code
 # Finds the Gaps in the collected data points
 # Parameter: points: PolarData as a list of polar points [[degree, radius],...]
-# Returns list of Gaps in terms of which degree 1 to degree 2 [(degree1, degree2),...]
+# Returns list of Gaps/Holes in terms of which degree 1 to degree 2 [(degree1, degree2),...]
+#   Also returns list of ranges where possibleDoors may lie as
+#   rangeData = {
+#            'range': r,
+#            'polarCoordinates': (point1, point2),
+#            'cartesianCoordinates': (point1Cart, point2Cart),
+#            'rangeDistance': rangeDistance (in inches)
+#            }
+# rangeData may be used for future development for aligning with doorframes
 def findGaps(points):
     degrees = []
     listOfNones = []
