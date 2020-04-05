@@ -174,7 +174,7 @@ def findGaps(points):
 
     print("Ranges Where No Data Points Found: ", listOfNones)
     print("Possible Doors: ", possibleDoors)
-    return listOfNones
+    return listOfNones + possibleDoors
 
 # Merges the first and last pair of angles
 #   if they are within 5 degrees of each other
